@@ -11,7 +11,7 @@ on:
 # jobs means workflows
 jobs:
     test:
-        runs-on: ubantu-latest
+        runs-on: ubuntu-latest
 
         steps:
             # step 1 - check the code from teh repo
@@ -33,3 +33,5 @@ jobs:
             # step 4 - run tests
             - name: Run tests
               run: pytest
+
+
