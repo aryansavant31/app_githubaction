@@ -1,0 +1,35 @@
+name: Python CI
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+# jobs means workflows
+jobs:
+    test:
+        runs-on: ubantu-latest
+
+        steps:
+            # step 1 - check the code from teh repo
+            - name: Check out code
+              uses: actions/checkout@v2
+
+            # step 2 - setup pyhton env
+            - name: Set up python env
+              uses: actions/setup-python@v2
+              with:
+                python-version: '3.8'
+
+            # step 3 - install dependencies
+            - name: Install dependencies
+              run: 
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+
+            # step 4 - run tests
+            - name: Run tests
+              run: pytest
